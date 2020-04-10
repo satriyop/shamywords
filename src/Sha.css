@@ -1,0 +1,11 @@
+.Sha {
+
+}
+
+.Sha-text-area {
+    margin-top: 10px;
+    width: 600px;
+    min-height: 20vh;
+    border: 3px solid #cccccc;
+    padding: 5px;
+}

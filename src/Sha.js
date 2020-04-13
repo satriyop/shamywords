@@ -22,10 +22,24 @@ class Sha extends React.Component {
 
         const id =  Date.now().toString()
 
+        const url = "http://127.0.0.1:8080/sha"; 
+        const requestOptions = {
+            method: 'POST',
+            // headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id, promise: this.state.text })
+        };
+        
+        fetch(url, requestOptions)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ result: data.sha })
+            })
+        
         this.setState(state => ({
             words: state.text + id,
             text: ''
         }));
+
     }
 
     render() {
@@ -41,11 +55,35 @@ class Sha extends React.Component {
                         <button>Sha</button>
                     </div>
                     <div>
-                        <ShaList words={this.state.words}/>
+                        <ShaList result={this.state.result}/>
                     </div>
                 </form>
             </div>
         )
+    }
+
+    componentDidMount(){
+        // const url = "http://127.0.0.1:8080/sha";
+        // fetch(url)
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
+        //     .catch(e => console.log(e))
+
+
+
+        // const id =  Date.now().toString()
+ 
+        // const requestOptions = {
+        //     method: 'POST',
+        //     // headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({ id: id, promise: this.state.text })
+        // };
+        
+        // fetch(url, requestOptions)
+        //     .then(res => res.json())
+        //     .then(result => console.log(result))
+        //     .catch(e => console.log(e));
+
     }
 }
 

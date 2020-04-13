@@ -4,7 +4,7 @@ class ShaList extends React.Component {
     render() {
         return (
             <ul>
-              <li>{this.props.words}</li>
+              <li>{this.props.result}</li>
             </ul>
           );
     }
